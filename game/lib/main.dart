@@ -15,15 +15,36 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      // home: const LoginPage(),
-      // home: const UserSetting(),
-      home: const TextButton(onPressed: test, child: Text("test")),
-      // home: const Test(),
-    );
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        // home: const LoginPage(),
+        // home: const UserSetting(),
+        home: GridView.count(
+          primary: false,
+          padding: const EdgeInsets.all(20),
+          crossAxisSpacing: 5,
+          mainAxisSpacing: 5,
+          crossAxisCount: 5,
+          children: const [],
+        )
+        // const TextButton(onPressed: test, child: Text("test")),
+        // home: const Test(),
+        );
+  }
+}
+
+Container blockMaker() {
+  return Container(
+      padding: const EdgeInsets.all(8),
+      color: Colors.teal[100],
+      child: const Center(child: Text("H")));
+}
+
+void playboardMaker() {
+  for (var ele = 0; ele < 100; ele++) {
+    blockMaker();
   }
 }
 

@@ -1,8 +1,9 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:game/core/gameLogic.core.dart';
 
-import 'models/block.model.dart';
+import 'models/boardCell.model.dart';
 
 void main() {
   // runApp(GameWidget(game: SpaceShooterGame()));
@@ -19,35 +20,61 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        // home: const LoginPage(),
-        // home: const UserSetting(),
+        // home: playField(40));
         home: GridView.count(
-          primary: false,
-          padding: const EdgeInsets.all(20),
-          crossAxisSpacing: 5,
-          mainAxisSpacing: 5,
-          crossAxisCount: 5,
-          children: const [],
-        )
-        // const TextButton(onPressed: test, child: Text("test")),
-        // home: const Test(),
-        );
+            padding: const EdgeInsets.fromLTRB(15, 70, 15, 0),
+            crossAxisCount: boardWidth,
+            children: BoardCell.multiplyCells(numberOfCell)));
   }
 }
 
-Container blockMaker() {
-  return Container(
-      padding: const EdgeInsets.all(8),
-      color: Colors.teal[100],
-      child: const Center(child: Text("H")));
+/*
+GestureDetector cellMaker() {
+  String cellText = 'E';
+  return GestureDetector(
+    onTap: () {
+      if (cellText == 'E') {
+        cellText = 'Player';
+      }
+      print(cellText);
+    },
+    child: Container(
+        padding: const EdgeInsets.all(8),
+        color: Colors.teal[100],
+        child: Center(
+            child: Text(
+          cellText,
+          style: const TextStyle(
+            color: Colors.blue,
+          ),
+        ))),
+  );
 }
 
-void playboardMaker() {
-  for (var ele = 0; ele < 100; ele++) {
-    blockMaker();
+List<GestureDetector> playBoardMaker(int n) {
+  List<GestureDetector> blocks = [];
+
+  for (int i = 0; i < 5; i++) {
+    blocks.add(GestureDetector(
+      child: const SizedBox(),
+    ));
   }
+  for (int i = 0; i < n; i++) {
+    blocks.add(cellMaker());
+  }
+  return blocks;
 }
 
+GridView playField(int n) {
+  return GridView.count(
+    primary: false,
+    padding: const EdgeInsets.all(20),
+    crossAxisSpacing: 5,
+    mainAxisSpacing: 5,
+    crossAxisCount: 5,
+    children: playBoardMaker(n),
+  );
+}
 void test() {
   var playField = [];
   print("------\n");
@@ -87,3 +114,4 @@ void test() {
     print("|$element|");
   }
 }
+*/
